@@ -1,0 +1,23 @@
+\documentclass[parskip]{scrartcl}
+\usepackage[margin=15mm]{geometry}
+\usepackage{tikz}
+
+\begin{document}
+
+\newcommand{\eye}[4]% size, x, y, rotation
+{   \draw[rotate around={#4:(#2,#3)}] (#2,#3) -- ++(-.5*55:#1) (#2,#3) -- ++(.5*55:#1);
+    \draw (#2,#3) ++(#4+55:.75*#1) arc (#4+55:#4-55:.75*#1);
+    % IRIS
+    \draw[fill=gray] (#2,#3) ++(#4+55/3:.75*#1) arc (#4+180-55:#4+180+55:.28*#1);
+    %PUPIL, a filled arc 
+    \draw[fill=black] (#2,#3) ++(#4+55/3:.75*#1) arc (#4+55/3:#4-55/3:.75*#1);
+}
+
+\begin{tikzpicture}
+    \eye{1}{0}{1}{-10}
+    \eye{2}{4}{0}{30}
+    \eye{0.5}{0}{-3}{135}
+    \eye{3}{4}{-4}{260}
+\end{tikzpicture}
+
+\end{document}

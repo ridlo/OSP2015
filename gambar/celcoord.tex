@@ -1,0 +1,48 @@
+% Celestial Coordinate in LaTeX
+% Copyleft (c) | 2015 - Ridlo W. Wibowo
+% ridlo.w.wibowo@gmail.com
+
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{ifthen}
+%\usepackage{amsmath,amssymb,wasysym}
+
+% preview
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{20pt}
+
+% equatorial coordinate
+\newcommand{\equatorial}[5]{ % x, y, latitude (in degree), HA (in degree), dec (in degree, + and -)	
+	% input
+	\def\x{#1}
+	\def\y{#2}
+	\def\phi{#3}
+	\def\HA{#4}
+	\def\dec{#5}
+	
+	% radius of the sphere
+	\def\R{5}
+	%\def\xnorth{-\R}
+	% North position
+	\ifthenelse{\HA<180}{\def\xnorth{-\R}}{\def\xnorth{\R}};
+	
+	\draw[black, fill=black] (\x, \y) circle (0.02);
+	\fill[ball color=white, opacity=0.4] (\x,\y) circle (\R);
+	\draw[black, opacity=0.7] (\x,\y) circle (\R);
+	
+	%\draw[rotate around={\phi:(\x,\y)}] (\x,\y) ellipse (#4 and #5);
+}
+
+
+\begin{document}
+
+
+
+
+\begin{tikzpicture}
+%\draw[black] (0,0) circle (1);
+\equatorial{2}{1}{45}{3}{1}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{10pt}
+
+%\usepackage{relsize}
+\tikzset{fontscale/.style = {font=\relsize{#1}}}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathreplacing}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{triangle 45}}},postaction={decorate}}}
+
+\begin{document}
+\begin{tikzpicture}
+\draw[black, fill=red!50, opacity=0.3] (0,0) circle (1cm);
+\draw[red, fill=red] (0,0) circle (0.01cm);
+\draw[black, fill=blue!50, opacity=0.3] (1,0) circle (1cm);
+\draw[red, fill=red] (1,0) circle (0.01cm);
+\draw[gray] (0.5,0.86602540378) -- (0.5,-0.86602540378);
+\draw[gray] (0,0) -- (0.5,0.86602540378) node[black, midway, left, scale=0.5, fill=gray!50] {$R$} -- (1,0) -- (0.5,-0.86602540378) -- cycle;
+\draw[black] (0,0) -- (1,0) node[midway, below, scale=0.5, fill=gray!50] {$R$};
+\draw[black,->] (0.2,0) arc (0:60:0.2cm); 
+\node[scale=0.5] at (0.35,0.1) {$60^{\circ}$};
+\end{tikzpicture}
+
+
+\end{document}
